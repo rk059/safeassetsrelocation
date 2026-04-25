@@ -244,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ── 10. Set Active Nav Link ── */
+/* ── 10. Set Active Nav Link ── */
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav-links a, .mobile-links a').forEach(link => {
     const href = link.getAttribute('href');
@@ -253,10 +253,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-})
 
-  /* ── Top Bar scroll behaviour ── */
- const topBar = document.getElementById('top-bar');
+  /* ✅ FIXED: Top Bar INSIDE */
+  const topBar = document.getElementById('top-bar');
   if (topBar) {
     const TB_H = window.innerWidth <= 600 ? 38 : 42;
     window.addEventListener('scroll', () => {
@@ -270,4 +269,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
-});
+}); // ✅ ONLY ONE closing
