@@ -256,7 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
   /* ── Top Bar scroll behaviour ── */
-  const topBar = document.getElementById('top-bar');
+ const topBar = document.getElementById('top-bar');
   if (topBar) {
     const TB_H = window.innerWidth <= 600 ? 38 : 42;
     window.addEventListener('scroll', () => {
@@ -270,5 +270,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
-});
 });
