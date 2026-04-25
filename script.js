@@ -253,4 +253,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+})
+
+  /* ── Top Bar scroll behaviour ── */
+  const topBar = document.getElementById('top-bar');
+  if (topBar) {
+    const TB_H = window.innerWidth <= 600 ? 38 : 42;
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > TB_H + 20) {
+        topBar.classList.add('tb-hidden');
+        if (navbar) navbar.classList.add('tb-gone');
+      } else {
+        topBar.classList.remove('tb-hidden');
+        if (navbar) navbar.classList.remove('tb-gone');
+      }
+    }, { passive: true });
+  }
+
 });

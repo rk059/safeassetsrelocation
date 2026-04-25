@@ -1386,3 +1386,100 @@ footer {
   .gallery-grid { grid-template-columns: 1fr; }
   .enquiry-form { padding: 28px 20px; }
 }
+
+/* ── Top Bar ── */
+#top-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 42px;
+  background: var(--navy-dark);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  z-index: 1001;
+  transition: transform 0.35s ease;
+}
+#top-bar.tb-hidden { transform: translateY(-100%); }
+
+.top-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.top-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.tb-label {
+  font-size: 0.73rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+.tb-social {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.tb-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 5px;
+  color: rgba(255,255,255,0.55);
+  background: rgba(255,255,255,0.07);
+  transition: var(--transition);
+}
+.tb-social a:hover { background: var(--orange); color: var(--white); transform: translateY(-1px); }
+.top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.tb-phone {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.82);
+  letter-spacing: 0.02em;
+  transition: color var(--transition);
+  white-space: nowrap;
+}
+.tb-phone:hover { color: var(--orange); }
+.tb-phone-icon { font-size: 0.8rem; }
+.tb-divider {
+  color: rgba(255,255,255,0.2);
+  font-size: 0.85rem;
+}
+
+/* Shift navbar down when top bar visible */
+#navbar { top: 42px; }
+#navbar.tb-gone { top: 0; }
+
+/* Adjust hero & page-hero padding for top bar */
+.hero-content { padding-top: 140px; }
+.page-hero { padding-top: 155px; }
+
+/* Responsive top bar */
+@media (max-width: 900px) {
+  .top-bar-inner { padding: 0 20px; }
+  .tb-label { display: none; }
+}
+@media (max-width: 600px) {
+  #top-bar { height: 38px; }
+  #navbar { top: 38px; }
+  .top-bar-inner { padding: 0 16px; gap: 8px; }
+  .tb-phone span:last-child { font-size: 0.75rem; }
+  .tb-phone2 { display: none; }
+  .tb-divider { display: none; }
+  .tb-social a { width: 24px; height: 24px; }
+  .hero-content { padding-top: 120px; }
+  .page-hero { padding-top: 130px; }
+}
