@@ -1,0 +1,509 @@
+/* ============================================================
+   SAFE ASSETS — city-pages.css
+   Styles for all 20 city landing pages
+   ============================================================ */
+
+/* ── City Hero ── */
+.cp-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--navy-dark);
+}
+.cp-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.22;
+  transition: opacity 0.5s;
+}
+.cp-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, var(--navy-dark) 45%, rgba(11,30,54,0.6) 100%);
+}
+.cp-hero-content {
+  position: relative;
+  z-index: 2;
+  /* top-bar(42px) + navbar(80px) + 40px breathing room = 162px */
+  padding-top: 162px;
+  padding-bottom: 80px;
+  max-width: 760px;
+}
+.cp-hero-content h1 {
+  color: var(--white);
+  margin: 14px 0 20px;
+  line-height: 1.05;
+}
+.cp-hero-sub {
+  color: rgba(255,255,255,0.75);
+  font-size: 1.08rem;
+  line-height: 1.8;
+  max-width: 560px;
+  margin-bottom: 36px;
+}
+.cp-hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+.cp-trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.cp-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.8);
+}
+.cp-trust-item span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px; height: 20px;
+  background: var(--orange);
+  color: var(--white);
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+/* ── Intro Section ── */
+.cp-intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.cp-intro-img-wrap {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: visible;
+}
+.cp-intro-img-wrap img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  display: block;
+}
+.cp-intro-badge {
+  position: absolute;
+  top: 20px; right: -16px;
+  background: var(--orange);
+  color: var(--white);
+  border-radius: var(--radius-md);
+  padding: 12px 18px;
+  text-align: center;
+  box-shadow: var(--shadow-orange);
+}
+.cp-badge-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: 0.03em;
+}
+.cp-badge-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.9;
+  margin-top: 2px;
+}
+.cp-local-tip {
+  position: absolute;
+  bottom: -20px; left: 20px; right: 20px;
+  background: var(--navy);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  box-shadow: var(--shadow-lg);
+}
+.cp-tip-icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.cp-local-tip strong {
+  display: block;
+  color: var(--orange);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.cp-local-tip p {
+  color: rgba(255,255,255,0.72);
+  font-size: 0.87rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── Services Slider ── */
+.cp-slider-wrap {
+  position: relative;
+  padding: 0 0 48px;
+}
+.cp-slider {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  cursor: grab;
+}
+.cp-slider:active { cursor: grabbing; }
+.cp-track {
+  display: flex;
+  gap: 24px;
+  transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);
+  will-change: transform;
+}
+.cp-slide {
+  flex: 0 0 calc(33.333% - 16px);
+  min-width: 0;
+}
+
+/* Service card inside slider */
+.cp-svc-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  height: 100%;
+  border: 1px solid var(--light-gray);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+.cp-svc-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-6px);
+  border-color: transparent;
+}
+.cp-svc-icon {
+  font-size: 2.4rem;
+  margin-bottom: 18px;
+}
+.cp-svc-title {
+  font-size: 1.25rem;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+.cp-svc-desc {
+  color: var(--text-light);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  flex: 1;
+  margin-bottom: 18px;
+}
+.cp-svc-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--orange);
+  transition: gap var(--transition);
+  margin-top: auto;
+}
+.cp-svc-link:hover { gap: 10px; }
+
+/* Testimonial card inside slider */
+.cp-tm-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-lg);
+  padding: 36px 30px;
+  height: 100%;
+  transition: var(--transition);
+}
+.cp-tm-card:hover { background: rgba(255,255,255,0.11); }
+
+/* Slider arrows */
+.cp-arr {
+  position: absolute;
+  top: 50%;
+  transform: translateY(calc(-50% - 24px));
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.2);
+  background: rgba(11,30,54,0.8);
+  color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  z-index: 10;
+  backdrop-filter: blur(4px);
+}
+.cp-arr:hover {
+  background: var(--orange);
+  border-color: var(--orange);
+  transform: translateY(calc(-50% - 24px)) scale(1.08);
+}
+.cp-arr-prev { left: -16px; }
+.cp-arr-next { right: -16px; }
+
+/* Dots */
+.cp-dots {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+/* ── Why Grid ── */
+.cp-why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.cp-why-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  border: 1px solid var(--light-gray);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+.cp-why-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+.cp-why-icon {
+  font-size: 2rem;
+  margin-bottom: 16px;
+  width: 52px; height: 52px;
+  background: var(--navy);
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+}
+.cp-why-card h3 {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+.cp-why-card p {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+/* ── Contact Grid ── */
+.cp-contact-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+.cp-form {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  padding: 36px;
+  box-shadow: var(--shadow-md);
+}
+.cp-contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.cp-contact-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  border: 1px solid var(--light-gray);
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  box-shadow: var(--shadow-sm);
+}
+.cp-contact-icon {
+  width: 46px; height: 46px;
+  background: var(--navy);
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+.cp-contact-card h4 {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.cp-contact-card a { color: var(--orange); font-weight: 600; font-size: 0.92rem; display: block; line-height: 1.7; }
+.cp-contact-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.65; margin: 0; }
+
+.cp-wa-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #25D366;
+  color: var(--white);
+  padding: 15px 22px;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 0.95rem;
+  justify-content: center;
+  transition: var(--transition);
+  box-shadow: 0 6px 20px rgba(37,211,102,0.35);
+}
+.cp-wa-btn:hover { background: #1ebe5a; transform: translateY(-2px); }
+
+/* Highlights grid */
+.cp-highlight-box {
+  background: var(--navy);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.cp-highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.cp-hl-icon { font-size: 1.5rem; }
+.cp-highlight-item strong {
+  display: block;
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 700;
+}
+.cp-highlight-item span {
+  display: block;
+  color: rgba(255,255,255,0.55);
+  font-size: 0.78rem;
+  margin-top: 2px;
+}
+
+/* ── City Chips ── */
+.cp-city-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 8px;
+}
+.cp-city-chip {
+  display: inline-block;
+  padding: 8px 18px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 100px;
+  color: rgba(255,255,255,0.8);
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+.cp-city-chip:hover {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   Chrome heights:
+     Desktop  → top-bar 42px + navbar 80px = 122px
+     Tablet   → top-bar 42px + navbar 80px = 122px
+     Mobile   → top-bar 38px + navbar 64px = 102px
+   ═══════════════════════════════════════════════════════ */
+
+/* ── ≤1050px ── */
+@media (max-width: 1050px) {
+  .cp-intro-badge { right: 10px; }
+}
+
+/* ── ≤900px  (hamburger nav kicks in) ── */
+@media (max-width: 900px) {
+  /* Hero: top-bar(42) + navbar(80) + 36 breathing = 158px */
+  .cp-hero           { min-height: 100vh; }
+  .cp-hero-content   {
+    max-width: 100%;
+    padding-top: 158px;
+    padding-bottom: 60px;
+  }
+  .cp-hero-sub       { max-width: 100%; font-size: 1rem; }
+
+  /* Breadcrumb gets its own visible row */
+  .cp-hero-content .breadcrumb {
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    row-gap: 4px;
+  }
+
+  /* Intro */
+  .cp-intro-grid     { grid-template-columns: 1fr; gap: 40px; }
+  .cp-intro-img-wrap { margin-bottom: 40px; }
+  .cp-local-tip      {
+    position: relative;
+    bottom: auto; left: auto; right: auto;
+    margin-top: 16px;
+  }
+  .cp-intro-badge    { top: 10px; right: 10px; }
+
+  /* Why grid: 2 columns */
+  .cp-why-grid       { grid-template-columns: 1fr 1fr; }
+
+  /* Contact */
+  .cp-contact-grid   { grid-template-columns: 1fr; }
+
+  /* Slider: 2 per view */
+  .cp-slide          { flex: 0 0 calc(50% - 12px); }
+  .cp-arr-prev       { left: -8px; }
+  .cp-arr-next       { right: -8px; }
+}
+
+/* ── ≤600px  (small mobile) ── */
+@media (max-width: 600px) {
+  /* Hero: top-bar(38) + navbar(64) + 30 breathing = 132px */
+  .cp-hero           { min-height: 100svh; }
+  .cp-hero-content   {
+    padding-top: 132px;
+    padding-bottom: 48px;
+  }
+  .cp-hero-content h1 { font-size: clamp(2.4rem, 10vw, 3.8rem); }
+  .cp-hero-sub        { font-size: 0.95rem; margin-bottom: 24px; }
+  .cp-hero-actions    { flex-direction: column; align-items: stretch; }
+  .cp-hero-actions .btn { justify-content: center; }
+  .cp-trust-row       { gap: 10px; }
+  .cp-trust-item      { font-size: 0.8rem; }
+
+  /* Why grid: 1 column */
+  .cp-why-grid        { grid-template-columns: 1fr; }
+
+  /* Slider: 1 per view, hide arrows (swipe instead) */
+  .cp-slide           { flex: 0 0 100%; }
+  .cp-arr             { display: none; }
+
+  /* Misc */
+  .cp-highlight-box   { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .cp-form            { padding: 24px 16px; }
+  .cp-intro-img-wrap img { height: 240px; }
+  .cp-contact-card    { flex-direction: column; gap: 10px; }
+  .cp-contact-icon    { width: 36px; height: 36px; font-size: 1rem; }
+  .cp-city-chips      { gap: 8px; }
+  .cp-city-chip       { padding: 6px 14px; font-size: 0.8rem; }
+}
+
+/* ── ≤380px  (very small phones) ── */
+@media (max-width: 380px) {
+  .cp-hero-content    { padding-top: 124px; }
+  .cp-highlight-box   { grid-template-columns: 1fr; }
+}
