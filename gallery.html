@@ -173,6 +173,14 @@
 <script>
 // Lightbox
 const items = document.querySelectorAll('.gallery-item[data-src]');
+document.addEventListener('click', function(e) {
+  const item = e.target.closest('.gallery-item');
+  if (!item) return;
+
+  const src = item.getAttribute('data-src');
+  lbImg.src = src;
+  lb.classList.add('open');
+});
 const lb = document.getElementById('lightbox');
 const lbImg = document.getElementById('lb-img');
 let currentIdx = 0;
@@ -185,6 +193,27 @@ document.getElementById('lb-prev').addEventListener('click', () => { currentIdx 
 document.getElementById('lb-next').addEventListener('click', () => { currentIdx = (currentIdx + 1) % srcs.length; lbImg.src = srcs[currentIdx]; });
 lb.addEventListener('click', e => { if (e.target === lb) lb.classList.remove('open'); });
 document.addEventListener('keydown', e => { if (!lb.classList.contains('open')) return; if (e.key==='Escape') lb.classList.remove('open'); if (e.key==='ArrowLeft') document.getElementById('lb-prev').click(); if (e.key==='ArrowRight') document.getElementById('lb-next').click(); });
+
+const gallery = document.getElementById('gallery-grid');
+
+const totalImages = 39; // change if needed
+
+for (let i = 1; i <= totalImages; i++) {
+    const imgPath = `/packers-movers/safe-assets-relocation-packers-and-movers-image${i}.jpeg`;
+
+    const div = document.createElement('div');
+    div.className = 'gallery-item reveal';
+    div.setAttribute('data-src', imgPath);
+
+    div.innerHTML = `
+        <img src="${imgPath}" alt="Gallery Image ${i}">
+        <div class="overlay">
+            <div class="overlay-icon">🔍</div>
+        </div>
+    `;
+
+    gallery.appendChild(div);
+}
 </script>
 </body>
 </html>
