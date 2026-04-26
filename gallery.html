@@ -276,26 +276,36 @@ document.addEventListener('contextmenu', function(e) {
     }
 });
 
-
 const lb = document.getElementById('lightbox');
 const lbImg = document.getElementById('lb-img');
 const lbVideo = document.getElementById('lb-video');
 
-let currentItems = [];
+let items = [];
+let currentIndex = 0;
 
+// Open lightbox
 document.addEventListener('click', function(e) {
   const item = e.target.closest('.gallery-item');
   if (!item) return;
 
+  items = Array.from(document.querySelectorAll('.gallery-item'));
+  currentIndex = items.indexOf(item);
+
+  showItem(currentIndex);
+  lb.classList.add('open');
+});
+
+// Show item (image/video)
+function showItem(index) {
+  const item = items[index];
   const src = item.dataset.src;
   const type = item.dataset.type;
-
-  currentItems = Array.from(document.querySelectorAll('.gallery-item'));
 
   if (type === 'video') {
     lbImg.style.display = 'none';
     lbVideo.style.display = 'block';
     lbVideo.src = src;
+    lbVideo.currentTime = 0;
     lbVideo.play();
   } else {
     lbVideo.pause();
@@ -303,8 +313,18 @@ document.addEventListener('click', function(e) {
     lbImg.style.display = 'block';
     lbImg.src = src;
   }
+}
 
-  lb.classList.add('open');
+// Next
+document.getElementById('lb-next').addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % items.length;
+  showItem(currentIndex);
+});
+
+// Prev
+document.getElementById('lb-prev').addEventListener('click', () => {
+  currentIndex = (currentIndex - 1 + items.length) % items.length;
+  showItem(currentIndex);
 });
 
 // Close
@@ -318,6 +338,24 @@ lb.addEventListener('click', e => {
   if (e.target === lb) {
     lb.classList.remove('open');
     lbVideo.pause();
+  }
+});
+
+// Keyboard support
+document.addEventListener('keydown', e => {
+  if (!lb.classList.contains('open')) return;
+
+  if (e.key === 'Escape') {
+    lb.classList.remove('open');
+    lbVideo.pause();
+  }
+
+  if (e.key === 'ArrowRight') {
+    document.getElementById('lb-next').click();
+  }
+
+  if (e.key === 'ArrowLeft') {
+    document.getElementById('lb-prev').click();
   }
 });
 </script>
