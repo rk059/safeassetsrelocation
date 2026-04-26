@@ -152,10 +152,22 @@
 </section>
 
 <!-- LIGHTBOX -->
-<div id="lightbox">
+<!-- <div id="lightbox">
   <button id="lb-close">✕</button>
   <button id="lb-prev">←</button>
   <img id="lb-img" src="" alt="Gallery image">
+  <button id="lb-next">→</button>
+</div> -->
+<div id="lightbox">
+  <button id="lb-close">✕</button>
+  <button id="lb-prev">←</button>
+
+  <img id="lb-img" style="display:none;">
+  
+  <video id="lb-video" controls style="display:none; max-width:90vw; max-height:88vh;"
+    controlsList="nodownload noplaybackrate">
+  </video>
+
   <button id="lb-next">→</button>
 </div>
 
@@ -170,7 +182,7 @@
         </div></div><div class="footer-col"><h5>Services</h5><ul class="footer-links"><li><a href="house-shifting.html">House Shifting</a></li><li><a href="office-shifting.html">Office Shifting</a></li><li><a href="vehicle-transportation.html">Vehicle Transport</a></li><li><a href="warehouse-storage.html">Warehouse &amp; Storage</a></li></ul></div><div class="footer-col"><h5>Company</h5><ul class="footer-links"><li><a href="mission.html">Our Mission</a></li><li><a href="branches.html">Our Branches</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li></ul></div><div class="footer-col"><h5>Contact</h5><div class="footer-contact-item"><span>📍</span><span>#D-96, 2nd Floor, R.C.C Structure, DDUTTL, Kanteerava Studio Industrial Suburb, Yeshwanthpur, Bangalore – 560 022</span></div><div class="footer-contact-item"><span>📞</span><span><a href="tel:+919570073395" style="color:var(--orange)">+91 95700 73395</a></span></div></div></div><div class="footer-bottom"><span>&copy; 2025 Safe Assets Relocation.</span><span><a href="#">Privacy</a></span></div></div></footer>
 <div class="float-cta"><a href="https://wa.me/919570073395" class="float-btn float-wa">💬 WhatsApp</a><a href="tel:+919570073395" class="float-btn float-call">📞 Call</a></div>
 <script src="script.js"></script>
-<script>
+<!-- <script>
 // Lightbox
 const items = document.querySelectorAll('.gallery-item[data-src]');
 document.addEventListener('click', function(e) {
@@ -214,6 +226,100 @@ for (let i = 1; i <= totalImages; i++) {
 
     gallery.appendChild(div);
 }
+</script> -->
+
+<script>
+const gallery = document.getElementById('gallery-grid');
+
+const totalImages = 39;
+
+// video indexes
+const videoIndexes = [27, 28, 29, 30, 33];
+
+for (let i = 1; i <= totalImages; i++) {
+
+    let filePath = '';
+    let isVideo = videoIndexes.includes(i);
+
+    if (isVideo) {
+        filePath = `/packers-movers/safe-assets-relocation-packers-and-movers-image${i}.mp4`;
+    } else {
+        filePath = `/packers-movers/safe-assets-relocation-packers-and-movers-image${i}.jpeg`;
+    }
+
+    const div = document.createElement('div');
+    div.className = 'gallery-item reveal';
+    div.setAttribute('data-src', filePath);
+    div.setAttribute('data-type', isVideo ? 'video' : 'image');
+
+    if (isVideo) {
+        div.innerHTML = `
+            <video src="${filePath}" controls preload="metadata"
+                style="width:100%; height:240px; object-fit:cover;"
+                controlsList="nodownload noplaybackrate">
+            </video>
+            <div class="overlay"><div class="overlay-icon">▶</div></div>
+        `;
+    } else {
+        div.innerHTML = `
+            <img src="${filePath}" alt="Gallery Image ${i}">
+            <div class="overlay"><div class="overlay-icon">🔍</div></div>
+        `;
+    }
+
+    gallery.appendChild(div);
+}
+
+document.addEventListener('contextmenu', function(e) {
+    if (e.target.tagName === 'VIDEO') {
+        e.preventDefault();
+    }
+});
+
+
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lb-img');
+const lbVideo = document.getElementById('lb-video');
+
+let currentItems = [];
+
+document.addEventListener('click', function(e) {
+  const item = e.target.closest('.gallery-item');
+  if (!item) return;
+
+  const src = item.dataset.src;
+  const type = item.dataset.type;
+
+  currentItems = Array.from(document.querySelectorAll('.gallery-item'));
+
+  if (type === 'video') {
+    lbImg.style.display = 'none';
+    lbVideo.style.display = 'block';
+    lbVideo.src = src;
+    lbVideo.play();
+  } else {
+    lbVideo.pause();
+    lbVideo.style.display = 'none';
+    lbImg.style.display = 'block';
+    lbImg.src = src;
+  }
+
+  lb.classList.add('open');
+});
+
+// Close
+document.getElementById('lb-close').addEventListener('click', () => {
+  lb.classList.remove('open');
+  lbVideo.pause();
+});
+
+// Click outside
+lb.addEventListener('click', e => {
+  if (e.target === lb) {
+    lb.classList.remove('open');
+    lbVideo.pause();
+  }
+});
 </script>
 </body>
 </html>
